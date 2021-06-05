@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- This style sheet is taken from https://www.w3schools.com/howto/howto_js_tabs.asp -->
+    <title>METRO Groceries</title>
+    <link rel="shortcut icon" type="image/png" href="pictures/metrologo.png">
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div class="header"><b>METRO</b> GROCERIES &nbsp - &nbsp Easy shopping for everyone</div>
+
+    <div class="card">
+        <!-- Tab links, each one with an onclick event associated with it -->
+        <div class="tab">
+            <button class="tablinks" onclick="openInfo(event, 'Client')"><b>CLIENT</b></button>
+            <button class="tablinks" onclick="openInfo(event, 'Products')"><b>PRODUCTS</b></button>
+            <button class="tablinks" onclick="openInfo(event, 'Cart')"><b>CART</b></button>
+        </div>
+        <div class="content">
+            <!-- CLIENT -->
+            <div id="Client" class="tabcontent">
+                <h1>Client Information</h1>
+                <p>This section will take into account some information to improve your shopping experience.</p>
+                <h3>Organic Foods</h3>
+                <p>Click here to only see organic foods:</p>
+                <input class="input" type="checkbox" id="Organic" name="Organic" value="Organic"
+                    onchange="populateListProductChoices(this.id, 'displayProduct')">
+                <label class="Organic" for="Organic">Organic 🌿</label>
+                <h3>Dietary Restrictions</h3>
+                <p>Do you have any dietary restrictions? <br>Please select the category or categories that best
+                    describes you.</p>
+                Choose a Category:
+                <select id="dietSelect" name="dietSelect"
+                    onchange="populateListProductChoices(this.id, 'displayProduct')">
+                    <option value=""></option>
+                    <option value="None">None</option>
+                    <option value="Nut">Nut Free</option>
+                    <option value="Lactose">Lactose Free</option>
+                    <option value="NutLactose">Nut and Lactose Free</option>
+                </select>
+            </div>
+
+            <!-- PRODUCTS -->
+            <div id="Products" class="tabcontent">
+                <h1>Your targeted products</h1>
+                <p>We preselected products based on your restrictions.</p>
+                <h3>Select the items you wish to buy:</h3>
+                <div id="displayProduct"></div>
+                <button class="button" type="button" onclick="selectedItems()">
+                    Add selected items to cart.
+                </button>
+            </div>
+
+            <!-- CART -->
+            <div id="Cart" class="tabcontent">
+                <h1>Cart</h1>
+                <p>Here is your cart.</p>
+                <h3>You selected: </h3>
+                <div id="displayCart"></div>
+            </div>
+        </div>
+    </div>
+    <footer>Website designed by: Arsène Lupin ⚡ &nbsp&nbsp&nbsp&nbsp&nbsp</footer>
+
+    <script src="scripts/groceries.js"></script>
+    <script src="scripts/main.js"></script>
+
+</body>
+
+</html>
