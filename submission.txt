@@ -1,0 +1,44 @@
+Here is the link to Lab 3: https://codingpatrick.github.io/Module3-Lab/
+Here is the link to Lab 2: https://codingpatrick.github.io/Module2-Lab/
+
+Persona Explanation
+
+In my implementation of my new grocery store, I used the Wizard Navigational Pattern. This Navigational Pattern is used to 
+separate tasks into a linear sequence of subtasks. I chose the option to move back and forth to give the users more freedom, while
+still being held to the order of the sequence. This choice of Navigational Pattern is important because of my Personas.
+
+In my cart I added a delivery or pick-up option. This is because both my personas use online grocery shopping for one of these two reasons.
+
+My first Persona is named Marcus. He is a construction worker, the father of a young girl and the husband of a pregnant wife. 
+He does not like online shopping. He does not have much technological experience. He enjoys using the Metro website because the Wizard
+Pattern guides him through the steps it takes to order his groceries. He likes to use the curb-side pick-up option because he does 
+not want to have any unnecessary interactions with others. This is in order to protect his wife and children from Covid-19.
+
+My second Persona is named Alyssa. She is a full-time university student. She lives on campus, away from her family. She loves online
+shopping, but she doesn't like spending time with groceries. She chooses the Metro site because the Wizard pattern guides her quickly
+and efficiently to her goal. She does not have any grocery stores near her appartment on campus. Since she does not want to take the bus 
+with many bags, she likes Metro wesbite because she can choose the delivery option. Now she can focus on studying and not waste any time
+at the store.
+
+Acknowledgement of code
+
+Part of the CSS was taken from:
+https://www.w3schools.com/howto/howto_js_tabs.asp
+https://www.w3schools.com/css/css3_buttons.asp
+
+To sort an Array using Javascript I used this link:
+https://stackoverflow.com/questions/18496898/sorting-array-of-float-point-numbers
+
+To filter items from a list I was inspired by the code in this link:
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+
+To hide / show the restrictions I was inspired by the code from this link:
+https://html-shark.com/HTML/ShowHideSections.htm
+
+To get the pop-up after checking out I was inspired by the code from this link:
+https://www.w3schools.com/js/js_popup.asp
+
+To change the tab colour I was inspired by the code from this link:
+https://stackoverflow.com/questions/2881307/can-i-have-two-javascript-onclick-events-in-one-element
+
+The rest of the code in the website is either a modification of the starter code provided by the professor or from me.

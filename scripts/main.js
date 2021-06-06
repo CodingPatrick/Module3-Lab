@@ -101,19 +101,6 @@ function selectedItems() {
 	c.appendChild(document.createTextNode("Total Price is: " + getTotalPrice(chosenProducts).toFixed(2) + "$"));
 }
 
-//https://stackoverflow.com/questions/4537580/change-the-color-of-the-active-tab-and-the-rest-to-normal-in-facebookfbml-ap
-function bigSteppa(element) {
-	//get all list items:
-	var liArray = document.getElementById("menu").getElementsByTagName("li");
-
-	//make all items inactive
-	for (var i = 0; i < liArray.length; i++)
-		liArray[i].className = "inactive";
-
-	//make clicked item active:
-	element.className = "active";
-}
-
 //https://html-shark.com/HTML/ShowHideSections.htm
 function ShowRadioButtonDiv (IdBaseName, NumberOfButtons) {
     for (x=1;x<=NumberOfButtons;x++) {
