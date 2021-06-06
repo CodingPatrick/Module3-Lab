@@ -141,7 +141,7 @@ function payUp() {
 	if (Delivery.checked) {
 		alert("Thank you for shopping with us! Your order will be delivered as soon as possible.");
 	} else if (Pickup.checked) {
-		alert("Thank you for shopping with us! Your order will be ready for pickup soon.");
+		alert("Thank you for shopping with us! Your order will be ready for curbside pickup soon.");
 	} else {
 		alert("Please select a way to receive your products.");
 	}
