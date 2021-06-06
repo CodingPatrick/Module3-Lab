@@ -3,6 +3,8 @@
 
 function openInfo(evt, tabName) {
 
+	document.getElementById("Welcome").className += " displayOpen";
+
 	// Get all elements with class="tabcontent" and hide them
 	tabcontent = document.getElementsByClassName("tabcontent");
 	for (i = 0; i < tabcontent.length; i++) {
@@ -25,24 +27,26 @@ function openInfo(evt, tabName) {
 // it makes each product name as the label for the checkbos
 
 function populateListProductChoices(slct1, slct2) {
-    var s1 = document.getElementById(slct1);
-    var s2 = document.getElementById(slct2);
-	
+	var s1 = document.getElementById(slct1);
+	var s2 = document.getElementById(slct2);
+
 	// s2 represents the <div> in the Products tab, which shows the product list, so we first set it empty
-    s2.innerHTML = "";
-		
+	s2.innerHTML = "";
+
 	// obtain a reduced list of products based on restrictions
-    var optionArray = restrictListProducts(products, s1.value);
+	var optionArray = restrictListProducts(products, s1.value);
 
 	// https://stackoverflow.com/questions/18496898/sorting-array-of-float-point-numbers
-	optionArray.sort(function (productOne, productTwo){return productOne.price - productTwo.price;});
+	optionArray.sort(function (productOne, productTwo) {
+		return productOne.price - productTwo.price;
+	});
 
 	// for each item in the array, create a checkbox element, each containing information such as:
 	// <input type="checkbox" name="product" value="Bread">
 	// <label for="Bread">Bread/label><br>
-		
+
 	for (i = 0; i < optionArray.length; i++) {
-			
+
 		var productName = optionArray[i].name;
 		// create the checkbox and add in HTML DOM
 		var checkbox = document.createElement("input");
@@ -50,7 +54,7 @@ function populateListProductChoices(slct1, slct2) {
 		checkbox.name = "product";
 		checkbox.value = productName;
 		s2.appendChild(checkbox);
-		
+
 		// create a label for the checkbox, and also add in HTML DOM
 		var label = document.createElement('label')
 		label.htmlFor = productName;
@@ -65,25 +69,25 @@ function populateListProductChoices(slct1, slct2) {
 
 		// create a breakline node and add in HTML DOM
 		s2.appendChild(document.createElement("br"));
-		s2.appendChild(document.createElement("br"));   
+		s2.appendChild(document.createElement("br"));
 	}
 }
-	
+
 // This function is called when the "Add selected items to cart" button in clicked
 // The purpose is to build the HTML to be displayed (a Paragraph) 
 // We build a paragraph to contain the list of selected items, and the total price
 
-function selectedItems(){
-	
+function selectedItems() {
+
 	var ele = document.getElementsByName("product");
 	var chosenProducts = [];
 
 	var c = document.getElementById('displayCart');
 	c.innerHTML = "";
-	
+
 	// build list of selected item
 	var para = document.createElement("P");
-	for (i = 0; i < ele.length; i++) { 
+	for (i = 0; i < ele.length; i++) {
 		if (ele[i].checked) {
 			para.appendChild(document.createTextNode(ele[i].value));
 			para.appendChild(document.createElement("br"));
@@ -95,4 +99,32 @@ function selectedItems(){
 	// add paragraph and total price
 	c.appendChild(para);
 	c.appendChild(document.createTextNode("Total Price is: " + getTotalPrice(chosenProducts).toFixed(2) + "$"));
+}
+
+//https://stackoverflow.com/questions/4537580/change-the-color-of-the-active-tab-and-the-rest-to-normal-in-facebookfbml-ap
+function bigSteppa(element) {
+	//get all list items:
+	var liArray = document.getElementById("menu").getElementsByTagName("li");
+
+	//make all items inactive
+	for (var i = 0; i < liArray.length; i++)
+		liArray[i].className = "inactive";
+
+	//make clicked item active:
+	element.className = "active";
+}
+
+//https://html-shark.com/HTML/ShowHideSections.htm
+function ShowRadioButtonDiv (IdBaseName, NumberOfButtons) {
+    for (x=1;x<=NumberOfButtons;x++) {
+        CheckThisButton = IdBaseName + x;
+        ThisDiv = IdBaseName + x +'Div';
+    if (document.getElementById(CheckThisButton).checked) {
+        document.getElementById(ThisDiv).style.display = "block";
+        }
+    else {
+        document.getElementById(ThisDiv).style.display = "none";
+        }
+    }
+    return false;
 }

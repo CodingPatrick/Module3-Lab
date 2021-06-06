@@ -1,6 +1,9 @@
 // Array of products, each product is an object with different fieldset
 // A set of ingredients should be added to products		 
 
+
+// https://www.cssscript.com/multi-step-form-bootstrap-enchanter/
+
 var products = [{
 		name: "Brocoli (🌿)",
 		nut: true,
@@ -9,14 +12,14 @@ var products = [{
 		price: 2.65
 	},
 	{
-		name: "Yogurt (🌿)",
+		name: "Yogurt (🌿🥛)",
 		nut: true,
 		lactose: false,
 		organic: true,
 		price: 8.94
 	},
 	{
-		name: "Peanuts (🌿)",
+		name: "Peanuts (🌿🥜)",
 		nut: false,
 		lactose: true,
 		organic: true,
@@ -37,7 +40,7 @@ var products = [{
 		price: 3.94
 	},
 	{
-		name: "Trail Mix",
+		name: "Trail Mix (🥜)",
 		nut: false,
 		lactose: true,
 		organic: false,
@@ -51,14 +54,14 @@ var products = [{
 		price: 4.73
 	},
 	{
-		name: "Almond Granola (🌿)",
+		name: "Almond Granola (🌿🥜)",
 		nut: false,
 		lactose: true,
 		organic: true,
 		price: 11.25
 	},
 	{
-		name: "Chocolate Milk",
+		name: "Chocolate Milk (🥛)",
 		nut: true,
 		lactose: false,
 		organic: false,
@@ -72,7 +75,7 @@ var products = [{
 		price: 10.95
 	},
 	{
-		name: "Frozen Pizza",
+		name: "Frozen Pizza (🥛)",
 		nut: true,
 		lactose: false,
 		organic: false,
@@ -86,30 +89,32 @@ var products = [{
 function restrictListProducts(prods, restriction) {
 	let product_names = [];
 
-	for (let i = 0; i < prods.length; i += 1) {
-		if ((restriction == "Nut") && (prods[i].nut == true)) {
-			product_names.push(prods[i]);
-		} 
-		else if ((restriction == "Lactose") && (prods[i].lactose == true)) {
-			product_names.push(prods[i]);
-		} 
-		else if ((restriction == "NutLactose") && (prods[i].lactose == true) && (prods[i].nut == true)) {
-			product_names.push(prods[i]);
-		} 
-		else if (restriction == "None") {
-			product_names.push(prods[i]);
-		}
-	}
-
 	var Organic = document.getElementById("Organic");
 	console.log(Organic.checked);
+	var Lactose = document.getElementById("Lactose");
+	console.log(Lactose.checked);
+	var Nut = document.getElementById("Nut");
+	console.log(Nut.checked);
+	var None = document.getElementById("No");
+	console.log(None.checked);
 
-	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
-
-	if (Organic.checked) {
-		return product_names.filter(product_names => product_names.organic)
+	for (let i = 0; i < prods.length; i += 1) {
+		product_names.push(prods[i]);
 	}
 
+	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+	if (None.checked) {
+		product_names = product_names.filter(product_names => product_names)
+	}
+	if (Organic.checked) {
+		product_names = product_names.filter(product_names => product_names.organic)
+	}
+	if (Lactose.checked) {
+		product_names = product_names.filter(product_names => product_names.lactose)
+	}
+	if (Nut.checked) {
+		product_names = product_names.filter(product_names => product_names.nut)
+	}
 	return product_names;
 }
 
@@ -122,4 +127,44 @@ function getTotalPrice(chosenProducts) {
 		}
 	}
 	return totalPrice;
+}
+
+// https://www.w3schools.com/js/js_popup.asp
+function payUp() {
+
+	var Delivery = document.getElementById("Delivery");
+	console.log(Delivery.checked);
+
+	var Pickup = document.getElementById("Pick-up");
+	console.log(Pickup.checked);
+
+	if (Delivery.checked) {
+		alert("Thank you for shopping with us! Your order will be delivered as soon as possible.");
+	} else if (Pickup.checked) {
+		alert("Thank you for shopping with us! Your order will be ready for pickup soon.");
+	} else {
+		alert("Please select a way to receive your products.");
+	}
+}
+
+// https://stackoverflow.com/questions/2881307/can-i-have-two-javascript-onclick-events-in-one-element
+function changeW() {
+	document.getElementById("welcome").className = "tablinks";
+	document.getElementById("diet").className = "tablinks active"
+	document.getElementById("products").className = "tablinks";
+	document.getElementById("checkout").className = "tablinks";
+}
+
+function changeD() {
+	document.getElementById("welcome").className = "tablinks";
+	document.getElementById("diet").className = "tablinks"
+	document.getElementById("products").className = "tablinks active";
+	document.getElementById("checkout").className = "tablinks";
+}
+
+function changeP() {
+	document.getElementById("welcome").className = "tablinks";
+	document.getElementById("diet").className = "tablinks"
+	document.getElementById("products").className = "tablinks";
+	document.getElementById("checkout").className = "tablinks active";
 }

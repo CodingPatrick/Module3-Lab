@@ -14,53 +14,95 @@
     <div class="card">
         <!-- Tab links, each one with an onclick event associated with it -->
         <div class="tab">
-            <button class="tablinks" onclick="openInfo(event, 'Client')"><b>CLIENT</b></button>
-            <button class="tablinks" onclick="openInfo(event, 'Products')"><b>PRODUCTS</b></button>
-            <button class="tablinks" onclick="openInfo(event, 'Cart')"><b>CART</b></button>
+            <button class="tablinks active" id="welcome" ><b>1 - Welcome Page</b></button>
+            <button class="tablinks"><b> ➡️ </b></button>
+            <button class="tablinks" id="diet"><b>2 - Dietary Restrictions</b></button>
+            <button class="tablinks"><b> ➡️ </b></button>
+            <button class="tablinks" id="products"><b>3 - Products</b></button>
+            <button class="tablinks"><b> ➡️ </b></button>
+            <button class="tablinks" id="checkout"><b>4 - Checkout</b></button>
         </div>
+
+        <!-- WELCOME PAGE -->
+        <div id="Welcome">
+            <br>
+            <h1>Welcome to Metro!</h1>
+            <h3>Try our new and improved online grocery service now.</h3>
+            <p>If you would like to start the service, please click the start button below.</p>
+            <br>
+            <button class="button" onclick="openInfo(event, 'Client'); changeW()">START SHOPPING ➡️</button>
+        </div>
+
         <div class="content">
+
             <!-- CLIENT -->
             <div id="Client" class="tabcontent">
-                <h1>Client Information</h1>
+                <h1>Dietary Restrictions</h1>
                 <p>This section will take into account some information to improve your shopping experience.</p>
-                <h3>Organic Foods</h3>
-                <p>Click here to only see organic foods:</p>
-                <input class="input" type="checkbox" id="Organic" name="Organic" value="Organic"
+                <h3>Product sorting preferences</h3>
+                <p>Do you have any dietary restrictions?</p>
+                <input class="input" type="radio" id="GroupName1" name="RadioGroupName" value="Yes"
+                    onclick="ShowRadioButtonDiv('GroupName', 2)">
+                <label class="Yes" for="Yes">Yes &nbsp&nbsp&nbsp&nbsp</label>
+                <input class="input" type="radio" id="No" name="RadioGroupName" value="No"
                     onchange="populateListProductChoices(this.id, 'displayProduct')">
-                <label class="Organic" for="Organic">Organic 🌿</label>
-                <h3>Dietary Restrictions</h3>
-                <p>Do you have any dietary restrictions? <br>Please select the category or categories that best
-                    describes you.</p>
-                Choose a Category:
-                <select id="dietSelect" name="dietSelect"
-                    onchange="populateListProductChoices(this.id, 'displayProduct')">
-                    <option value=""></option>
-                    <option value="None">None</option>
-                    <option value="Nut">Nut Free</option>
-                    <option value="Lactose">Lactose Free</option>
-                    <option value="NutLactose">Nut and Lactose Free</option>
-                </select>
+                <label class="No" for="No">No</label>
+
+                <!-- https://html-shark.com/HTML/ShowHideSections.htm -->
+                <div id="GroupName1Div" style="display: none;">
+                    <h3>Please select what best describes you:</h3>
+                    <input class="input" type="checkbox" id="Organic" name="Organic" value="Organic"
+                        onchange="populateListProductChoices(this.id, 'displayProduct')">
+                    <label class="Organic" for="Organic">Organic 🌿&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+                    <input class="input" type="checkbox" id="Lactose" name="Lactose" value="Lactose"
+                        onchange="populateListProductChoices(this.id, 'displayProduct')">
+                    <label class="Lactose" for="Lactose">Lactose Free
+                        🥛&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+                    <input class="input" type="checkbox" id="Nut" name="Nut" value="Nut"
+                        onchange="populateListProductChoices(this.id, 'displayProduct')">
+                    <label class="Nut" for="Nut">Nut Free 🥜&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+                </div>
+                <div class="card">
+                    <button class="move" onclick="window.location.reload();">🏠 Return to Welcome Page</button>
+                    <button class="move" id="none" onclick="openInfo(event, 'Products'); changeD()">Proceed to Products ➡️</button>
+                </div>
             </div>
 
             <!-- PRODUCTS -->
             <div id="Products" class="tabcontent">
-                <h1>Your targeted products</h1>
-                <p>We preselected products based on your restrictions.</p>
+                <h1>Your Targeted Products</h1>
+                <p>We selected products based on your restrictions.</p>
                 <h3>Select the items you wish to buy:</h3>
                 <div id="displayProduct"></div>
-                <button class="button" type="button" onclick="selectedItems()">
-                    Add selected items to cart.
-                </button>
+                <button class="button" type="button" onclick="selectedItems()">Add selected items to
+                    cart.</button><br><br>
+                <div class="card">
+                    <button class="move" type="move" onclick="openInfo(event, 'Client'); changeW()">⬅️ Return to Dietary
+                        Restrictions</button>
+                    <button class="move" type="move" onclick="openInfo(event, 'Cart'); changeP()">Proceed to Checkout
+                        ➡️</button>
+                </div>
             </div>
 
             <!-- CART -->
             <div id="Cart" class="tabcontent">
-                <h1>Cart</h1>
-                <p>Here is your cart.</p>
-                <h3>You selected: </h3>
+                <h1>Checkout</h1>
+                <h3>Delivery or in-store pick-up?</h3>
+                <p>Please select which option is best for you:</p>
+                <input class="input" type="radio" id="Delivery" name="option" value="Delivery">
+                <label class="Delivery" for="Delivery">Delivery &nbsp&nbsp&nbsp&nbsp</label>
+                <input class="input" type="radio" id="Pick-up" name="option" value="Pick-up">
+                <label class="Pick-up" for="Pick-up">Pick-up</label>
+                <h3>Cart - You selected: </h3>
                 <div id="displayCart"></div>
+                <div class="card">
+                    <button class="move" type="button" onclick="openInfo(event, 'Products'); changeD()">⬅️ Return to
+                        Products</button>
+                    <button class="move" type="button" onclick="payUp()">Checkout 💰</button>
+                </div>
             </div>
         </div>
+    </div>
     </div>
     <footer>Website designed by: Arsène Lupin ⚡ &nbsp&nbsp&nbsp&nbsp&nbsp</footer>
 
