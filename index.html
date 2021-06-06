@@ -14,7 +14,7 @@
     <div class="card">
         <!-- Tab links, each one with an onclick event associated with it -->
         <div class="tab">
-            <button class="tablinks active" id="welcome" ><b>1 - Welcome Page</b></button>
+            <button class="tablinks active" id="welcome"><b>1 - Welcome Page</b></button>
             <button class="tablinks"><b> ➡️ </b></button>
             <button class="tablinks" id="diet"><b>2 - Dietary Restrictions</b></button>
             <button class="tablinks"><b> ➡️ </b></button>
@@ -53,18 +53,18 @@
                     <h3>Please select what best describes you:</h3>
                     <input class="input" type="checkbox" id="Organic" name="Organic" value="Organic"
                         onchange="populateListProductChoices(this.id, 'displayProduct')">
-                    <label class="Organic" for="Organic">Organic 🌿&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+                    <label class="Organic" for="Organic">Organic only 🌿&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
                     <input class="input" type="checkbox" id="Lactose" name="Lactose" value="Lactose"
                         onchange="populateListProductChoices(this.id, 'displayProduct')">
-                    <label class="Lactose" for="Lactose">Lactose Free
-                        🥛&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+                    <label class="Lactose" for="Lactose">No dairy ❌🥛&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
                     <input class="input" type="checkbox" id="Nut" name="Nut" value="Nut"
                         onchange="populateListProductChoices(this.id, 'displayProduct')">
-                    <label class="Nut" for="Nut">Nut Free 🥜&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+                    <label class="Nut" for="Nut">No nuts ❌🥜&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
                 </div>
                 <div class="card">
                     <button class="move" onclick="window.location.reload();">🏠 Return to Welcome Page</button>
-                    <button class="move" id="none" onclick="openInfo(event, 'Products'); changeD()">Proceed to Products ➡️</button>
+                    <button class="move" id="none" onclick="openInfo(event, 'Products'); changeD()">Proceed to Products
+                        ➡️</button>
                 </div>
             </div>
 
